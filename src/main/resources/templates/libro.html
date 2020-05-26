@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th = "http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+	integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+	crossorigin="anonymous">
+<title>Formulario libro</title>
+</head>
+<body>
+	<div class="container col-lg-1 col-offset-6 centered">
+	<form th:action="@{/ingresarLibro}" th:object="${libro}" method="post" class="main-form" novalidate>
+	<div class="col">
+	
+	 	<div class="row">
+	 	<div class="form-group">
+	 	<label class="badge" >Seleccionar categoria</label>
+		<th>
+			<select th:field="*{categoria.c_categoria}">
+			<option th:each ="cat: ${categoriaCombo}" th:value="${cat.c_categoria}"
+					th:text ="${cat.s_categoria}">
+			</option>
+			</select>
+		</th>
+		</div>
+		</div>
+		
+		<div class="row">
+	 	<div class="form-group">
+		<label class="badge" for="s_titulo">Titulo:</label>
+		<input th:field = "*{s_titulo}" id="s_nombre" type="text" placeholder="Titulo del libro" name="s_titulo" />
+		<span th:errors= "*{s_titulo}" style="color: #E81505"></span>
+		</div>
+		</div>
+
+		<div class="row">
+	 	<div class="form-group">
+	    <label class="badge" for="s_autor">Autor:</label>
+		<input th:field="*{s_autor}" id="s_apellido" type="text" placeholder="Autor del libro"  name="s_autor" />
+		<span th:errors="*{s_autor}" style="color: #E81505"></span>
+		</div>
+		</div>
+		
+		<div class="row">
+	 	<div class="form-group">
+	    <label class="badge" for="s_isbn">ISBN: </label>
+		<input th:field="*{s_isbn}" id="s_isbn" type="text" placeholder="ISBN del libro"  name="s_isbn" />
+		<span th:errors="*{s_isbn}" style="color: #E81505"></span>
+		</div>
+		</div>
+	    
+	    <div class="row">
+	 	<div class="form-group">
+	    <label class="badge">Estado:</label>
+        <input type="checkbox" th:field ="*{b_estado}" th:value="${false}">	 
+        </div>
+		</div> 
+          
+	    <input type="submit" value="Guardar" />
+	</div>
+	</form>
+	</div>
+</body>
+</html>

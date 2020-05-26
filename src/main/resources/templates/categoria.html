@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+	integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+	crossorigin="anonymous">
+<title>Formulario categoria</title>
+</head>
+<body>
+<div class="container">
+	<form th:action="@{/ingresarCategoria}" th:object="${categoria}" method="post">
+	 	<br>
+		<label class="badge" for="s_categoria">Nombre:</label>
+		<input th:field = "*{s_categoria}" id="s_categoria" type="text" placeholder="Nombre de la categoria" name="s_categoria" />
+		<span th:errors= "*{s_categoria}" style="color: #E81505"></span>
+			    
+	  	<br>
+	    <input type="submit" value="Guardar categoria" />
+	
+	</form>
+</div>
+</body>
+</html>
